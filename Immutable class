@@ -1,0 +1,42 @@
+package Examples;
+    class Food
+    {
+        String variety;
+        Food(String variety)
+        {
+            this.variety = variety;
+        }
+    }
+public class ImmutableExamp {
+        private final int id;
+        private final String name;
+        private final Food food;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public Food getFood() {
+        return food;
+    }
+
+    public ImmutableExamp(int id, String name, Food f) {
+        this.id = id;
+        this.name = name;
+        Food newFood = new Food(f.variety);
+        this.food = newFood;
+    }
+    public static void main(String[] args)
+    {
+        Food f = new Food("Mutton");
+        ImmutableExamp im = new ImmutableExamp(1,"Biriyani",f);
+        System.out.println("Food Id: "+im.getId()+"\nFood Name: "+im.getName()+"\nFood variety: "+im.food.variety);
+        f.variety = "Chicken";
+        System.out.println(im.food.variety);
+    }
+
+
+}
