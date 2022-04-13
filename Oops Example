@@ -1,0 +1,71 @@
+package Examples;
+
+class Vehicle
+{
+    //Override & Inheritance
+    void run()
+    {
+        System.out.println("Vehicle is running");
+    }
+}
+class Methodoverridding extends Vehicle {
+    void run() {
+        System.out.println("Bike is running");
+    }
+//Overload
+    public int add(int x, int y) {
+        return x + y;
+    }
+    public int add(int x,int y,int z)
+    {
+        return x + y + z;
+    }
+}
+//Abstract
+abstract class Bike{
+    abstract void colour();
+}
+class Pulsar extends Bike
+{
+    @Override
+    void colour() {
+        System.out.println(" Pulsar colour is Black ");
+    }
+
+}
+//encapsulation example
+class Encapsulation
+{
+    private String bike_no;
+
+    public String getBike_no()
+    {
+        return bike_no;
+    }
+    public void setBike_no(String bike_no)
+    {
+        this.bike_no = bike_no;
+    }
+}
+
+public class OopsEx {
+    public static void main(String[] args)
+    {
+        Vehicle v = new Vehicle();
+        Vehicle ob = new Methodoverridding();
+        Methodoverridding m = new Methodoverridding();
+        v.run();
+        ob.run();
+        m.run();
+        System.out.println(m.add(4,2));
+        System.out.println(m.add(5,2, 3));
+        Pulsar p = new Pulsar();
+        p.colour();
+        Encapsulation en = new Encapsulation();
+        en.setBike_no("TN33 010");
+        System.out.println("Bike Number: "+en.getBike_no());
+
+    }
+
+}
+
