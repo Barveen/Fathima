@@ -1,0 +1,16 @@
+package Examples;
+
+public class CallByValue {
+    int a = 10;
+    void change(int acopy)
+    {
+        acopy = 30;
+    }
+    public static void main(String [] args)
+    {
+        CallByValue cbv = new CallByValue();
+        System.out.println("Before change: " +cbv.a);
+        cbv.change(30);
+        System.out.println("After change: "+cbv.a);
+    }
+}
