@@ -1,0 +1,15 @@
+public class CallByReference {
+    int a = 10;
+    void change(CallByReference cr)
+    {
+        cr.a = cr.a + 10;
+    }
+    public static void main(String [] args)
+    {
+        CallByReference cr = new CallByReference();
+        System.out.println("Before Change: " +cr.a);
+        cr.change(cr);
+        System.out.println("After change: "  +cr.a);
+    }
+
+}
