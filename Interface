@@ -1,0 +1,38 @@
+package Examples;
+
+public interface Inter {
+    void print();
+    void show();
+    static int square(int x)
+    {
+        return (x*x);
+    }
+    default void msg()
+    {
+        System.out.println("Hello Default method");
+    }
+
+}
+abstract class A implements Inter
+{
+    @Override
+    public void print() {
+        System.out.println("Hello");
+    }
+}
+class B extends A {
+    @Override
+    public void show() {
+        System.out.println("Welcome");
+
+    }
+
+    public static void main(String args[]) {
+        B b = new B();
+        b.print();
+        b.show();
+        System.out.println(Inter.square(2));
+        b.msg();
+        }
+
+    }
