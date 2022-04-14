@@ -1,0 +1,25 @@
+class CallByRef
+{
+    int a;
+    CallByRef(int i)
+    {
+        a = i;
+    }
+
+}
+public class CallByReferenceExp
+{
+    void change(CallByRef cR)
+    {
+        cR.a = 4000;
+    }
+    public static void main(String [] args)
+    {
+        CallByRef c= new CallByRef(30);
+        System.out.println("Before Change: "+c.a );
+        CallByReferenceExp cBRObj = new CallByReferenceExp();
+        cBRObj.change(c);
+        System.out.println("After Change: "+c.a);
+
+    }
+}
