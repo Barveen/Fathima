@@ -44,7 +44,7 @@ public class Zoho {
                 }
                 case 2:
                 {Double amount;
-                    // Ask user which employee they want to change while checking for valid data entry
+                    
                     System.out.print("Enter Employee # whos salary do you want to change: ");
                     emp_id = sc.nextInt();
                     if (emp_id > emp.size())
@@ -55,7 +55,7 @@ public class Zoho {
                     }
                     else
                     {
-                        // If valid decrease number by one for accurate array position
+                        
                         emp_id -= 1;
 
                         // Ask amount user wants to adjust salary by and check for valid input
