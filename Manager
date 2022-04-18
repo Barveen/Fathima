@@ -1,0 +1,93 @@
+package com.company;
+
+import java.util.List;
+import java.util.ListIterator;
+
+public class Manager extends Employee {
+    String name;
+    double emp_Id;
+    String status;
+    double salary;
+    private String phone_Number;
+
+
+
+    Manager(double emp_Id, String name, double salary, String status,String phone_Number) {
+        this.emp_Id = emp_Id;
+        this.name = name;
+        this.salary = salary;
+        this.status = status;
+        this.phone_Number = phone_Number;
+
+    }
+    public double getSalary() {
+        return salary;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public String getPhone_Number() {
+        return phone_Number;
+    }
+
+    public double getEmp_Id() {
+        return emp_Id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+
+    void phone_Number(List<Employee>emp) {
+       super.phone_Number(emp);
+    }
+
+    void change_status()
+    {
+
+        System.out.printf("%s's is a currently a %s. What would you like to change their rank to?\n", name, status);
+        System.out.println("Enter the Manager Type" +
+                "\n1 for Project Manager"
+                + "\n2 for Floor Manager");
+       int temp = console.nextInt() ;
+        if(temp == 1)
+        {
+            status = "Project Manager";
+        }
+        else if(temp == 2)
+        {
+            status = "Floor Manager";
+        }
+        System.out.printf("\n%s is now a %s", name, status);
+        ListIterator<Employee> li = emp.listIterator();
+        while (li.hasNext()) {
+            Employee e = li.next();
+            li.set(new Employee(getId(),getName(),getSalary(),status,getPhone_Number()));
+        }
+
+    }
+    void salary_change(double amount)
+    {
+        super.salary_change(amount);
+    }
+    void delete(List<Employee> emp)
+    {
+        super.delete(emp);
+    }
+    public String toString() {
+        return "Manager{" +
+                "name='" + name + '\'' +
+                ", emp_Id=" + emp_Id +
+                ", status='" + status + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
+
+}
+
