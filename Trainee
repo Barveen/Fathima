@@ -1,0 +1,95 @@
+package com.company;
+import java.util.*;
+public class Trainee extends Employee {
+    String name;
+    int emp_Id;
+    String status;
+    double salary;
+    private String phone_Number;
+
+    Trainee(int emp_Id, String name, double salary, String status,String phone_Number) {
+        this.emp_Id = emp_Id;
+        this.name = name;
+        this.salary = salary;
+        this.status = status;
+        this.phone_Number = phone_Number;
+
+        System.out.printf("\n%s is a Faculty member that is a %s and makes $%.2f a year \n\n", name, status, salary);
+    }
+    Trainee()
+    {
+
+    }
+
+
+    public String getPhone_Number() {
+        return phone_Number;
+    }
+
+    void phone_Number(List<Employee>emp) {
+         super.phone_Number(emp);
+    }
+
+    void change_status() {
+        System.out.println("Enter the Position of the Trainee: " +
+                "1 for Project Trainee" +
+                "2 for Developer" +
+                "3 for Team Lead");
+        int temp = console.nextInt() ;
+        if(temp == 1)
+        {
+            status = "Project Trainee";
+        }
+        else if(temp == 2)
+        {
+            status = "Developer";
+        }
+        else if(temp == 3)
+        {
+            status = "Team Leader";
+        }
+        System.out.printf("\n%s is now a %s", name, status);
+        ListIterator<Employee> li = emp.listIterator();
+        while (li.hasNext()) {
+            Employee e = li.next();
+            li.set(new Employee(getId(),getName(),getSalary(),status,getPhone_Number()));
+        }
+    }
+    void salary_change(double amount)
+    {
+        super.salary_change(amount);
+    }
+    void delete(List<Employee> emp)
+    {
+        super.delete(emp);
+    }
+    public double getSalary() {
+        return salary;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public double getEmp_Id() {
+        return emp_Id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "Trainee{" +
+                "name='" + name + '\'' +
+                ", emp_Id=" + emp_Id +
+                ", status='" + status + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+}
+
+
+
