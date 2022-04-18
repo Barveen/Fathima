@@ -1,0 +1,199 @@
+package com.company;
+
+import java.util.*;
+
+public class Employee {
+    int employee_Id;
+    String name;
+    String status;
+    private double salary;
+    int enteredNum;
+    private String  phone_Number;
+    static String company_Name = "Zoho";
+    Scanner console = new Scanner(System.in);
+    List<Employee> emp =new ArrayList<>();
+
+    public String getPhone_Number() {
+        return phone_Number;
+    }
+
+
+
+    // Employee() Construction taking in arguments to set name and salary
+    Employee( int employee_Id,String name, double salary,String status,String ph_Num) {
+        this.employee_Id = employee_Id;
+        this.name = name;
+        this.salary = salary;
+        this.status = status;
+        phone_Number = ph_Num;
+
+    }
+    Employee()
+    {}
+
+    public Employee(int employee_id, int id, String employeeName, double salary, String status,double ph_Num) {
+    }
+
+    public int getId() {
+        return employee_Id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getStatus() {
+        return status;
+    }
+    void getInfo(List<Employee>emp)
+    {
+        int i = 0;
+        for(Employee e: emp)
+        {
+            System.out.println((i+1) + " " +e+""+company_Name);
+            i++;
+        }
+    }
+    double getSalary()
+    {
+        return salary;
+    }
+    void phone_Number(List<Employee>emp) {
+        System.out.println("Enter employee Id: ");
+        employee_Id = console.nextInt();
+        for (Employee employee:emp) {
+            if (employee_Id != employee.getId()) {
+                System.out.println("Please enter a valid employee Id");
+
+            }
+            else
+            {
+                System.out.println(employee.getPhone_Number());
+            }
+
+        }
+    }
+
+
+    public String toString() {
+        return "\nID : "+employee_Id+"\nName : "+name+"\nStatus : "+status+"\nSalary : "+salary+"\nCompany Name : "+company_Name;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    void delete(List<Employee>emp)
+    {
+        System.out.println("Enter the Employee Id: ");
+        int emp_id = console.nextInt();
+        for (Employee employee : emp)
+        if (emp_id != employee.getId())
+        {
+            System.out.println("Not a Valid Employee ID!");
+        }
+        else
+        {
+            emp.remove(emp_id);
+            System.out.println("Employee removed Successfully");
+        }
+
+    }
+    void change_status()
+    {
+
+                System.out.println("Press " +
+                        "1 for Project Trainee");
+                int temp = console.nextInt();
+                if (temp == 1) {
+                    status = "Project Trainee";
+                }
+                System.out.printf("\n%s is now a %s", name, status);
+        ListIterator<Employee> li = emp.listIterator();
+        while (li.hasNext()) {
+            Employee e = li.next();
+            li.set(new Employee(getId(),getName(),getSalary(),status,phone_Number));
+        }
+    }
+
+    void salary_change(double amount) {
+
+                salary = getSalary();
+                salary += amount;
+                System.out.printf("%s's salary has been changed to $%.2f.", this.getName(), this.getSalary());
+            }
+
+
+    private String getEmployeeName() {
+        return name;
+    }
+
+    public void create_new(List<Employee> emp) {
+        int emp_Id, rank, category, choice, passWord, n;
+        double salary;
+        String name, status;
+        System.out.println("How many Employee you want to create: ");
+        n = console.nextInt();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Choose the employee type: ");
+            System.out.println("Enter" +
+                    "\n1 for Incubation Trainee" +
+                    "\n2 for Trainee" +
+                    "\n3 for Manager");
+            choice = console.nextInt();
+
+            switch (choice) {
+                case 1: {
+                    System.out.println("Enter the Employee Type: ");
+                    status = console.next();
+                    System.out.println("Enter the Incubation Trainee Name: ");
+                    name = console.next();
+                    System.out.println("Enter the Incubation Trainee ID: ");
+                    emp_Id = console.nextInt();
+                    System.out.printf("\n Enter the %s's Salary: ", name);
+                    salary = console.nextDouble();
+                    System.out.println("Enter the Phone Number: ");
+                    String ph_Num = console.next();
+                    emp.add(new Employee(emp_Id, name, salary, status,ph_Num));
+                    break;
+                }
+                case 2: {
+                    System.out.println("Enter your project trainee's name: ");
+                    name = console.next();
+                    System.out.println("Enter the  Trainee ID: ");
+                    emp_Id = console.nextInt();
+                    System.out.println(" Enter the Salary: ");
+                    salary = console.nextDouble();
+                    System.out.println("Enter the Phone Number: ");
+                    String ph_Num = console.next();
+                    System.out.println("Enter the Position of the Trainee: " +
+                            "1 for Project Trainee" +
+                            "2 for Developer" +
+                            "3 for Team Lead");
+                    status= console.next();
+                    emp.add(new Trainee(emp_Id, name, salary, status,ph_Num));
+                    break;
+                }
+                case 3: {
+                    System.out.println("Enter the Manager's name: ");
+                    name = console.next();
+                    System.out.println("Enter the  manager ID: ");
+                    emp_Id = console.nextInt();
+                    System.out.printf("%s's Salary: ", name);
+                    salary = console.nextDouble();
+                    System.out.println("Enter the Phone Number: ");
+                    String ph_Num = console.next();
+                    System.out.println("Enter the Manager Type" +
+                            "Project Manager"
+                            + "/Floor Manager");
+                    status = console.next() ;
+                    emp.add(new Manager(emp_Id, name, salary, status,ph_Num));
+                    break;
+                }
+            }
+        }
+    }
+
+}
