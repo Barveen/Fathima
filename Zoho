@@ -1,0 +1,127 @@
+package com.company;
+
+import java.util.*;
+public class Zoho {
+     static int emp_id;
+
+    static void menu()
+    {
+        System.out.println("Select a number that you want to do: " );
+        System.out.println(" 1.) Create New Employee");
+        System.out.println(" 2.) Increase or Decrease Salary");
+        System.out.println(" 3.) Display All Information");
+        System.out.println(" 4.) Quit Employee");
+        System.out.println(" 5.) Show Menu Options");
+        System.out.println(" 6.) Change Status");
+        System.out.println(" 7.) Getting Phone Number");
+        System.out.println(" 8.) Exit Program!");
+    }
+
+    static Scanner sc = new Scanner(System.in);
+    static List<Employee> emp = new ArrayList<>();
+
+    public static void main(String [] args)
+    {
+        Employee employee = new Employee();
+        boolean on = true;
+        int menu_Option = 0;
+
+
+        employee.create_new(emp);
+        menu();
+
+        while(on)
+        {
+            System.out.println("Select a menu option that you want: ");
+            menu_Option = sc.nextInt();
+
+            switch (menu_Option)
+            {
+                case 1:
+                {
+                    employee.create_new(emp);
+                    break;
+                }
+                case 2:
+                {Double amount;
+                    // Ask user which employee they want to change while checking for valid data entry
+                    System.out.print("Enter Employee # whos salary do you want to change: ");
+                    emp_id = sc.nextInt();
+                    if (emp_id > emp.size())
+                    {
+                        // If not valid inform User while giving them option to display list
+                        System.out.println("Not a Valid Employee ID! Press 3 for Employee List.");
+                        break;
+                    }
+                    else
+                    {
+                        // If valid decrease number by one for accurate array position
+                        emp_id -= 1;
+
+                        // Ask amount user wants to adjust salary by and check for valid input
+                        System.out.print("Enter amount to adjust salary: ex. (-100) for decrease and (100) for increase: ");
+                        amount = sc.nextDouble();
+                    }
+
+                    //Takes the valid arraylist number and returns that object then runs
+                    // the salary_change(amount) method on that object with amount entered above
+                    emp.get(emp_id).salary_change(amount);
+
+
+                    //employee.salary_change();
+                }
+                case 3:
+                {
+                    employee.getInfo(emp);
+                    break;
+                }
+                case 4:
+                {
+                    employee.delete(emp);
+                    break;
+                }
+                case 5:
+                {
+                    menu();
+                    break;
+                }
+                case 6:
+                {
+                    System.out.print("Enter Employee serial number who's status you want to change: ");
+                    emp_id =sc.nextInt();
+
+                     // comparing length of
+                    // Arraylist to the number enter number
+                    if (emp_id > emp.size())
+                    {
+                        // If not valid inform User while giving them option to display list
+                        System.out.println("Not a Valid Employee ID! Press 3 for Employee List.");
+                        break;
+                    }
+                    else {
+                        // If valid decrease number by one for accurate array position
+                        emp_id -= 1;
+                        emp.get(emp_id).change_status();
+                    }
+
+                        //employee.change_status();
+                    break;
+                }
+
+                case 7:
+                {
+                    employee.phone_Number(emp);
+                    break;
+                }
+                case 8:
+                {
+                    System.out.println("Program Exited!");
+                    on = false;
+                    break;
+                }
+            }
+        }
+
+
+    }
+}
